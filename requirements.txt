@@ -1,0 +1,4 @@
+scikit-image
+streamlit
+streamlit-image-comparison
+

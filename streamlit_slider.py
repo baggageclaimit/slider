@@ -45,7 +45,7 @@ def main(left_image_path, right_image_path, display_width=2800):
         page_icon=str(page_icon),
     )
 
-    #st.image(str(horizontal_logo_light), width=400)
+    #st.image(str(horizontal_logo_light), width=1200)
     #st.title("Unsupervised Change Detection Demo")
 
     left_image, right_image = load_data(left_image_path, right_image_path)
@@ -57,7 +57,7 @@ def main(left_image_path, right_image_path, display_width=2800):
         label2="Post-Image with Change Overlay",
         width=display_width,
     )
-    st.caption("Move slider to compare images before and after.")
+    #st.caption("Move slider to compare images before and after.")
 
 
 def parse_args():

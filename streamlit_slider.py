@@ -45,8 +45,8 @@ def main(left_image_path, right_image_path, display_width=1800):
         page_icon=str(page_icon),
     )
 
-    st.image(str(horizontal_logo_light), width=400)
-    st.title("Unsupervised Change Detection Demo")
+    #st.image(str(horizontal_logo_light), width=400)
+    #st.title("Unsupervised Change Detection Demo")
 
     left_image, right_image = load_data(left_image_path, right_image_path)
 

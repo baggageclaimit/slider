@@ -45,30 +45,8 @@ def main(left_image_path, right_image_path, display_width=1800):
         page_icon=str(page_icon),
     )
 
-    st.markdown(
-        """
-        <style>
-            /* Change the background color of the app */
-            .main {
-                background-color: #f0f2f6; /* Replace this with your desired color */
-            }
-
-            /* Optional: Change the background of the sidebar */
-            .css-1d391kg {
-                background-color: #dfe6e9; /* Replace this with your desired sidebar color */
-            }
-
-            /* Optional: Change font color for contrast */
-            body {
-                color: #333333; /* Replace with your desired font color */
-            }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
-
-    #st.image(str(horizontal_logo_light), width=400)
-    #st.title("Unsupervised Change Detection Demo")
+    st.image(str(horizontal_logo_light), width=400)
+    st.title("Unsupervised Change Detection Demo")
 
     left_image, right_image = load_data(left_image_path, right_image_path)
 

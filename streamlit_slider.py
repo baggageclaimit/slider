@@ -94,6 +94,6 @@ def parse_args():
 if __name__ == "__main__":
     left_image_path = "left.png"
     right_image_path = "right.png"
-    display_width = 1600
+    display_width = 1200
 
     main(left_image_path, right_image_path, display_width)

@@ -31,7 +31,7 @@ def load_data(left_image_path, right_image_path):
     return left_image, right_image
 
 
-def main(left_image_path, right_image_path, display_width=2800):
+def main(left_image_path, right_image_path, display_width=1800):
     logo_path = pathlib.Path("./logo").resolve()
     page_icon_folder = logo_path / "Logomark"
     horizontal_folder = logo_path / "Horizontal Logo"
@@ -45,7 +45,7 @@ def main(left_image_path, right_image_path, display_width=2800):
         page_icon=str(page_icon),
     )
 
-    #st.image(str(horizontal_logo_light), width=1200)
+    #st.image(str(horizontal_logo_light), width=400)
     #st.title("Unsupervised Change Detection Demo")
 
     left_image, right_image = load_data(left_image_path, right_image_path)
@@ -55,7 +55,7 @@ def main(left_image_path, right_image_path, display_width=2800):
         img2=right_image,
         label1="Pre-Image with Change Overlay",
         label2="Post-Image with Change Overlay",
-        width=display_width,
+        width=display_width
     )
     #st.caption("Move slider to compare images before and after.")
 

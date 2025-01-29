@@ -35,28 +35,41 @@ def load_data(left_image_path, right_image_path):
 def main(left_image_path, right_image_path):
     left_image, right_image = load_data(left_image_path, right_image_path)
 
-    # Remove all margins, padding, and set top-left alignment
+    # Force top-left alignment and remove all padding/margins
     st.markdown(
         """
         <style>
+            .stApp { background-color: #07323C !important; }
             .block-container { padding: 0px !important; margin: 0px !important; }
-            .stApp { background-color: #07323C !important; padding: 0px !important; margin: 0px !important; }
-            img { max-width: 100vw !important; height: auto !important; }
-            .st-emotion-cache-1kyxreq { width: 100% !important; }
             div[data-testid="stVerticalBlock"] { padding: 0px !important; margin: 0px !important; }
+            div[data-testid="stImage"] { padding: 0px !important; margin: 0px !important; }
+            div[data-testid="stHorizontalBlock"] { padding: 0px !important; margin: 0px !important; }
+            section[data-testid="stSidebar"] { display: none !important; } /* Hide sidebar */
+            .image-container {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: auto;
+                overflow: hidden;
+            }
         </style>
         """,
         unsafe_allow_html=True,
     )
 
-    # Image comparison without centering or padding
+    # Image comparison component inside a div for forced alignment
+    st.markdown('<div class="image-container">', unsafe_allow_html=True)
+    
     image_comparison(
         img1=left_image,
         img2=right_image,
         label1="",
         label2="",
-        width=1100  # Wider layout for better rectangular fit
+        width=1200  # Adjusted width to better fit without centering
     )
+
+    st.markdown('</div>', unsafe_allow_html=True)
 
 
 def parse_args():
@@ -71,3 +84,4 @@ if __name__ == "__main__":
     right_image_path = "right.png"
 
     main(left_image_path, right_image_path)
+

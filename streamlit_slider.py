@@ -72,8 +72,11 @@ def main(left_image_path, right_image_path):
                 justify-content: flex-start;
             }
             /* Hide Streamlit branding/footer */
-            footer {visibility: hidden !important;}
+            footer {display: none !important; visibility: hidden !important; height: 0px !important;}
+            .viewerBadge_link__1S137 {display: none !important;}
             .viewerBadge_container__1QSob {display: none !important;}
+            .st-emotion-cache-1wrcr25 {display: none !important;}
+            .st-emotion-cache-16txtl3 {display: none !important;}
             .styles_viewerBadge__1yB5_ {display: none !important;}
         </style>
         """,

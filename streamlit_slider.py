@@ -4,6 +4,7 @@ import pathlib
 import sys
 
 import skimage
+import numpy as np
 import streamlit as st
 from streamlit_image_comparison import image_comparison
 
@@ -22,6 +23,13 @@ for h in _logger_handlers:
 def load_data(left_image_path, right_image_path):
     left_image = skimage.io.imread(str(left_image_path))
     right_image = skimage.io.imread(str(right_image_path))
+
+    # Crop images to make them more rectangular
+    target_height = int(left_image.shape[0] * 0.6)  # Reduce height to ~60% for a rectangular shape
+    center = left_image.shape[0] // 2
+    left_image = left_image[center - target_height // 2 : center + target_height // 2, :]
+    right_image = right_image[center - target_height // 2 : center + target_height // 2, :]
+
     return left_image, right_image
 
 
@@ -41,7 +49,7 @@ def main(left_image_path, right_image_path):
         unsafe_allow_html=True,
     )
 
-    # Centered image comparison with increased width
+    # Centered image comparison with rectangular dimensions
     col1, col2, col3 = st.columns([0.1, 0.8, 0.1])  
 
     with col2:
@@ -50,7 +58,7 @@ def main(left_image_path, right_image_path):
             img2=right_image,
             label1="",
             label2="",
-            width=1000  # Increased width for better visibility
+            width=1100  # Wider layout for better rectangular fit
         )
 
 

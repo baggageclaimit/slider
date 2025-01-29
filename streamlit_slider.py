@@ -35,7 +35,7 @@ def load_data(left_image_path, right_image_path):
 def main(left_image_path, right_image_path):
     left_image, right_image = load_data(left_image_path, right_image_path)
 
-    # Force full left-alignment and remove all padding/margins
+    # Force full left-alignment, remove Streamlit footer, and remove all padding/margins
     st.markdown(
         """
         <style>
@@ -71,6 +71,10 @@ def main(left_image_path, right_image_path):
                 align-items: flex-start;
                 justify-content: flex-start;
             }
+            /* Hide Streamlit branding/footer */
+            footer {visibility: hidden !important;}
+            .viewerBadge_container__1QSob {display: none !important;}
+            .styles_viewerBadge__1yB5_ {display: none !important;}
         </style>
         """,
         unsafe_allow_html=True,

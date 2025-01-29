@@ -35,30 +35,48 @@ def load_data(left_image_path, right_image_path):
 def main(left_image_path, right_image_path):
     left_image, right_image = load_data(left_image_path, right_image_path)
 
-    # Force top-left alignment and remove all padding/margins
+    # Force full left-alignment and remove all padding/margins
     st.markdown(
         """
         <style>
-            .stApp { background-color: #07323C !important; }
-            .block-container { padding: 0px !important; margin: 0px !important; }
-            div[data-testid="stVerticalBlock"] { padding: 0px !important; margin: 0px !important; }
-            div[data-testid="stImage"] { padding: 0px !important; margin: 0px !important; }
-            div[data-testid="stHorizontalBlock"] { padding: 0px !important; margin: 0px !important; }
-            section[data-testid="stSidebar"] { display: none !important; } /* Hide sidebar */
+            .stApp {
+                background-color: #07323C !important;
+                padding: 0px !important; 
+                margin: 0px !important; 
+                overflow: hidden !important;
+            }
+            .block-container {
+                padding: 0px !important; 
+                margin: 0px !important; 
+                width: 100vw !important; 
+                max-width: 100vw !important;
+            }
+            div[data-testid="stVerticalBlock"],
+            div[data-testid="stImage"],
+            div[data-testid="stHorizontalBlock"] {
+                padding: 0px !important; 
+                margin: 0px !important;
+            }
+            section[data-testid="stSidebar"] {
+                display: none !important;
+            }
             .image-container {
-                position: absolute;
+                position: fixed;
                 top: 0;
                 left: 0;
                 width: 100vw;
                 height: auto;
                 overflow: hidden;
+                display: flex;
+                align-items: flex-start;
+                justify-content: flex-start;
             }
         </style>
         """,
         unsafe_allow_html=True,
     )
 
-    # Image comparison component inside a div for forced alignment
+    # Ensure the slider is fully flush left
     st.markdown('<div class="image-container">', unsafe_allow_html=True)
     
     image_comparison(
@@ -66,7 +84,7 @@ def main(left_image_path, right_image_path):
         img2=right_image,
         label1="",
         label2="",
-        width=1200  # Adjusted width to better fit without centering
+        width=1200  # Wider for better browser fit
     )
 
     st.markdown('</div>', unsafe_allow_html=True)

@@ -71,13 +71,12 @@ def main(left_image_path, right_image_path):
                 align-items: flex-start;
                 justify-content: flex-start;
             }
-            /* Hide Streamlit branding/footer */
-            footer {display: none !important; visibility: hidden !important; height: 0px !important;}
-            .viewerBadge_link__1S137 {display: none !important;}
-            .viewerBadge_container__1QSob {display: none !important;}
-            .st-emotion-cache-1wrcr25 {display: none !important;}
-            .st-emotion-cache-16txtl3 {display: none !important;}
-            .styles_viewerBadge__1yB5_ {display: none !important;}
+            /* Hide Streamlit branding/footer using the latest class */
+            div[class*="_hostedName_"] {
+                display: none !important;
+                visibility: hidden !important;
+                height: 0px !important;
+            }
         </style>
         """,
         unsafe_allow_html=True,

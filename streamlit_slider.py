@@ -25,41 +25,45 @@ def load_data(left_image_path, right_image_path):
     return left_image, right_image
 
 
-def main(left_image_path, right_image_path, display_width=1200):
+def main(left_image_path, right_image_path):
     left_image, right_image = load_data(left_image_path, right_image_path)
 
-    # Remove all margins and paddings using Streamlit markdown hack
+    # Remove all margins and paddings
     st.markdown(
         """
         <style>
             .block-container { padding: 0px !important; margin: 0px !important; }
             .stApp { padding: 0px !important; margin: 0px !important; }
+            img { max-width: 100vw !important; height: auto !important; }
+            .st-emotion-cache-1kyxreq { width: 100% !important; }
         </style>
         """,
         unsafe_allow_html=True,
     )
 
-    image_comparison(
-        img1=left_image,
-        img2=right_image,
-        label1="",
-        label2="",
-        width=display_width
-    )
+    # Adjust layout for different screen sizes
+    col1, col2, col3 = st.columns([0.1, 0.8, 0.1])  # Center the slider
+
+    with col2:
+        image_comparison(
+            img1=left_image,
+            img2=right_image,
+            label1="",
+            label2="",
+            width=800  # Good for laptops, dynamically adjusts for smaller screens
+        )
 
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Compare two images.")
     parser.add_argument("-l", "--left-image", type=str, default=None, help="The left image for the comparison")
     parser.add_argument("-r", "--right-image", type=str, default=None, help="The right image for the comparison")
-    parser.add_argument("-w", "--display-width", type=int, default=1200, help="Width of the Streamlit Image Comparison")
     return parser.parse_args()
 
 
 if __name__ == "__main__":
     left_image_path = "left.png"
     right_image_path = "right.png"
-    display_width = 1200
 
-    main(left_image_path, right_image_path, display_width)
+    main(left_image_path, right_image_path)
 

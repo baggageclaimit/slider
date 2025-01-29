@@ -72,7 +72,11 @@ def main(left_image_path, right_image_path):
                 justify-content: flex-start;
             }
             /* Hide Streamlit branding/footer using the latest class */
-            div[class*="_hostedName_"] {
+            div[class*="_container_1upux_"],
+            div[class*="_hostedName_"],
+            div[class*="_linkOutText_"],
+            div[class*="_linkOutIcon_"],
+            footer {
                 display: none !important;
                 visibility: hidden !important;
                 height: 0px !important;

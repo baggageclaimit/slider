@@ -28,12 +28,12 @@ def load_data(left_image_path, right_image_path):
 def main(left_image_path, right_image_path):
     left_image, right_image = load_data(left_image_path, right_image_path)
 
-    # Remove all margins and paddings
+    # Apply background color & remove margins/padding
     st.markdown(
         """
         <style>
             .block-container { padding: 0px !important; margin: 0px !important; }
-            .stApp { padding: 0px !important; margin: 0px !important; }
+            .stApp { background-color: #07323C !important; padding: 0px !important; margin: 0px !important; }
             img { max-width: 100vw !important; height: auto !important; }
             .st-emotion-cache-1kyxreq { width: 100% !important; }
         </style>
@@ -41,8 +41,8 @@ def main(left_image_path, right_image_path):
         unsafe_allow_html=True,
     )
 
-    # Adjust layout for different screen sizes
-    col1, col2, col3 = st.columns([0.1, 0.8, 0.1])  # Center the slider
+    # Centered image comparison
+    col1, col2, col3 = st.columns([0.1, 0.8, 0.1])  
 
     with col2:
         image_comparison(
@@ -50,7 +50,7 @@ def main(left_image_path, right_image_path):
             img2=right_image,
             label1="",
             label2="",
-            width=800  # Good for laptops, dynamically adjusts for smaller screens
+            width=800  # Adjust for laptops, scales for mobile
         )
 
 

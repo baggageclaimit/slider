@@ -41,7 +41,7 @@ def main(left_image_path, right_image_path):
         unsafe_allow_html=True,
     )
 
-    # Centered image comparison
+    # Centered image comparison with increased width
     col1, col2, col3 = st.columns([0.1, 0.8, 0.1])  
 
     with col2:
@@ -50,7 +50,7 @@ def main(left_image_path, right_image_path):
             img2=right_image,
             label1="",
             label2="",
-            width=800  # Adjust for laptops, scales for mobile
+            width=1000  # Increased width for better visibility
         )
 
 

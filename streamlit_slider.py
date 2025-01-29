@@ -4,7 +4,6 @@ import pathlib
 import sys
 
 import skimage
-import numpy as np
 import streamlit as st
 from streamlit_image_comparison import image_comparison
 
@@ -36,7 +35,7 @@ def load_data(left_image_path, right_image_path):
 def main(left_image_path, right_image_path):
     left_image, right_image = load_data(left_image_path, right_image_path)
 
-    # Apply background color & remove margins/padding
+    # Remove all margins, padding, and set top-left alignment
     st.markdown(
         """
         <style>
@@ -44,22 +43,20 @@ def main(left_image_path, right_image_path):
             .stApp { background-color: #07323C !important; padding: 0px !important; margin: 0px !important; }
             img { max-width: 100vw !important; height: auto !important; }
             .st-emotion-cache-1kyxreq { width: 100% !important; }
+            div[data-testid="stVerticalBlock"] { padding: 0px !important; margin: 0px !important; }
         </style>
         """,
         unsafe_allow_html=True,
     )
 
-    # Centered image comparison with rectangular dimensions
-    col1, col2, col3 = st.columns([0.1, 0.8, 0.1])  
-
-    with col2:
-        image_comparison(
-            img1=left_image,
-            img2=right_image,
-            label1="",
-            label2="",
-            width=1100  # Wider layout for better rectangular fit
-        )
+    # Image comparison without centering or padding
+    image_comparison(
+        img1=left_image,
+        img2=right_image,
+        label1="",
+        label2="",
+        width=1100  # Wider layout for better rectangular fit
+    )
 
 
 def parse_args():
@@ -74,4 +71,3 @@ if __name__ == "__main__":
     right_image_path = "right.png"
 
     main(left_image_path, right_image_path)
-
